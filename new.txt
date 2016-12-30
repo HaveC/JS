@@ -1,2 +1,3 @@
 git bush is easy
 git is a free soft
+git studying
