@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="keyword" content="布尔教育">
+  <title>this.index</title>
+  <style type="text/css">
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      background: #5198B8;
+    }
+    ul li{
+      list-style: none;
+
+    }
+    #contain{
+      position: relative;
+      box-shadow: 0 5px 10px #fff;
+      width: 800px;
+      height: 500px;
+      border: 4px solid #fff;
+      margin: 40px auto;
+      text-align: center;
+    }
+    #contain img{
+      width: 800px;
+      height: 500px;
+    }
+    #contain ul{
+      position: absolute;
+      right: -40px;
+      top: 0;
+    }
+    #contain ul li{
+      width: 30px;
+      height: 30px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+    #contain ul .active{
+      background: #0D2F70;
+    }
+  </style>
+  <script type="text/javascript">
+    window.onload = function () {
+      var oCon = document.getElementById('contain');
+      var oImg = oCon.getElementsByTagName('img')[0];
+      var aLI = oCon.getElementsByTagName('li');
+      var arr = ['1.jpg','2.jpg','3.jpg','4.jpg'];
+
+      function add( s0 ) {
+        oImg.src = arr[s0];
+        aLI[0].className = 'active';
+      }
+      add(0);
+      for (var i = 0; i < aLI.length; i++) {
+        aLI[i].index = i ;
+        aLI[i].onmouseover = function () {
+          add(this.index);
+          for (var i = 0; i < aLI.length; i++) {
+            aLI[i].className = '';
+          }
+          this.className = 'active';
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+    <div id="contain">
+      <img />
+      <ul>
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+</body>
+</html>

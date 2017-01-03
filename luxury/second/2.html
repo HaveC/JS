@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keyword" content="布尔教育">
+    <title>无缝切换</title>
+    <style type="text/css">
+        p{
+            font-size: 60px;
+        }
+    </style>
+</head>
+<body>
+    <p></p>
+    <img src="../img/0.jpg">
+    <img src="../img/0.jpg">
+    <img src="../img/colon.jpg">
+    <img src="../img/0.jpg">
+    <img src="../img/0.jpg">
+    <img src="../img/colon.jpg">
+    <img src="../img/0.jpg">
+    <img src="../img/0.jpg">
+
+
+
+
+   <script type="text/javascript">
+   window.onload = function() {
+
+        var oP = document.getElementsByTagName('p')[0];
+        var aImg = document.getElementsByTagName('img');
+
+        function getDate(){
+                var myTime = new Date();
+                var iHours = myTime.getHours();
+                var iMin = myTime.getMinutes();
+                var iSec = myTime.getSeconds();
+                var str = '';
+                str = toTwo(iHours) + ':' + toTwo(iMin) + ':' + toTwo(iSec);
+                oP.innerHTML = str;
+                for (var i = 0; i < aImg.length; i++) {
+                    if ( i == 2 || i == 5 ) {
+                        aImg.src = '../img/colon.jpg';
+                    }else{
+                    aImg[i].src = '../img/' + str.charAt(i) + '.jpg';
+                    }
+                }
+                
+
+
+            }
+        getDate();
+        setInterval( getDate,1000 );
+
+
+
+
+    }
+   
+    function toTwo(n) {
+        return n < 10 ? '0' + n : '' + n ;
+    }
+   </script> 
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keyword" content="布尔教育">
+    <title>轮播图</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 600px;
+            height: 600px;
+            position: relative;
+            margin: 80px auto;
+            border: 10px solid #999;
+            background: #fff;
+        }
+        #top,#bot{
+            position: absolute;
+            width: 600px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            color: #fff;
+            font-size: 16px;
+            background: gray;
+        }
+        #top{
+            top: 0;
+        }
+        #bot{
+            bottom: 0;
+        }
+        #prev,#next{
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            top: 280px;
+            opacity: 0.4;
+            background: #6b6b6b;
+            font-size: 40px;
+            font-weight: bold;
+            border: 1px solid #6b6b6b;
+            text-align: center;
+            line-height: 60px;
+            color: #fff;
+            text-decoration: none;
+        }
+        #prev{
+            left: 0;
+            display: 
+        }
+        #next{
+            right: 0;
+        }
+        #btn1,#btn2{
+            position: absolute;
+            top: -80px;
+        }
+        #btn1{
+            left:200px;
+        }
+        #btn2{
+            right: 200px;
+        }
+        #span1{
+            position: absolute;
+            top: -40px;
+            width: 600px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        #img1{
+            width: 600px;height: 600px;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+        
+            var Btn1 = document.getElementById('btn1');
+            var Btn2 = document.getElementById('btn2');
+            var Top = document.getElementById('top');
+            var Bot = document.getElementById('bot');
+            var Prev = document.getElementById('prev');
+            var Next = document.getElementById('next');
+            var Img = document.getElementById('img1');
+            var Span = document.getElementById('span1');
+            var Arr = ["1.jpg","2.jpg","3.jpg"];
+            var ArrTxt = ["初音","上神大人","水中美女"];
+            var num = 0;
+            var onOff = true;
+
+            Btn1.onclick = function(){
+                onOff = true;
+                Span.innerHTML = "121212121";
+            }
+            Btn2.onclick = function(){
+                onOff = false;
+                Span.innerHTML = "333333333";
+            }
+
+            function Add(){
+                Top.innerHTML = ArrTxt[num];
+                Bot.innerHTML = num+1 + "/" + ArrTxt.length;
+                Img.src = Arr[num];
+            }
+            Add();
+            Prev.onclick = function(){
+                num--;
+                if (num == -1) {
+                    if (onOff) {
+                        num = Arr.length-1;
+                    }else{
+                        alert("已经不能退了！！！");
+                        num = 0;
+                    }
+                    Add();
+                }
+                Next.onclick = function(){
+                num++;
+                if (num == Arr.length) {
+                    if (onOff) {
+                        num = 0;
+                    }else{
+                        alert("已经不能再往前了！！！");
+                        num = Arr.length-1; 
+                    }
+                    Add();
+                }
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <input id="btn1" type="button" name="" value="循环切换">
+        <input id="btn2" type="button" name="" value="顺序切换">
+        <span id="span1">图片可由最后一张跳至第一张</span>
+        <p id="top"></p>
+        <p id="bot"></p>
+        <img id="img1" src="">
+        <a href="javascript:;" id="prev"><</a>
+        <a href="javascript:;" id="next">></a>
+    </div>
+</body>
+</html>

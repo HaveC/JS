@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keyword" content="布尔教育">
+    <title>多组图片切换</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #ccc;
+        }
+        ul,li{
+            list-style: none;
+        }
+        #content{
+            width: 1200px;
+            margin: 100px auto;
+        }
+        #lis1,#lis2{
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid red;
+            float: left;
+            box-shadow: 0px 5px 10px #888888;
+        }
+        #lis1{
+            width: 600px;
+            height: 400px;
+            margin-right: 40px; 
+        }
+        #lis1 img{
+            width: 580px;
+            height: 380px;
+        }
+        #lis2{
+            width: 400px;
+            height: 400px;
+            padding: 20px;
+        }
+        #lis2 img{
+            width: 360px;
+            height: 380px;
+        }
+        .btn1,.btn2{
+            width: 60px;
+            height: 30px;
+            position: absolute;
+            top: 50px;
+        }
+        .btn1{
+            left: 168px;
+        }
+        .btn2{
+            left: 238px;
+        }
+    </style>
+    <script type="text/javascript">
+    window.onload = function () {
+        
+        var Con = document.getElementById('content');
+        var Inp = document.getElementsByTagName('input');
+        var Img = Con.getElementsByTagName('img');
+        var oP = Con.getElementsByTagName('P');
+        var arr = [['1.jpg','2.jpg','3.jpg'],['4.jpg','5.jpg','6.jpg','7.jpg']];
+        var onOff = true;
+
+
+        for (var i = 0; i < arr.length; i++) {
+                Img[i].index = 0 ;
+        }
+        function fnT () {
+            for (var i = 0; i < arr.length; i++) {
+                Img[i].src = arr[i][Img[i].index];
+                oP[i].innerHTML = (Img[i].index+1) + '/' + arr[i].length;
+            }   
+        }
+        fnT();
+        Inp[1].onclick = function () {
+            for (var i = 0; i < arr.length; i++) {
+            Img[i].index++;
+                if (Img[i].index == arr[i].length) {
+                    Img[i].index = 0;
+                }
+                fnT();
+            }
+        }
+        Inp[0].onclick = function () {
+            for (var i = 0; i < arr.length; i++) {
+            Img[i].index --;
+                if (Img[i].index == -1) {
+                    Img[i].index = arr[i].length-1;
+                }
+                fnT();
+            }
+        }
+        for (var i = 0; i < arr.length; i++) {
+            Img[i].oindex = i ;
+            Img[i].onclick = function(){
+                this.index++ ;
+                if (this.index == arr[this.oindex].length) {
+                    this.index = 0 ;
+                }
+                this.src = arr[this.oindex][this.index];
+                oP[this.oindex].innerHTML = (this.index+1) + '/' + arr[this.oindex].length;   
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <input class="btn1" type="button" value="上一组">
+    <input class="btn2" type="button" value="下一组">
+    <ul id="content">
+        <li id="lis1">
+            <img >
+            <p>....</p>
+        </li>
+        <li id="lis2">
+            <img >
+            <p>....</p>
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>名字</title>
+	<style type="text/css">
+		.wrap{
+			width: 800px;
+			text-align: center;
+			margin: 50px auto;
+		}
+		.content{
+			width: 300px;
+			height: 350px;
+			border: 5px solid #999;
+			margin-left: 250px;
+			position: relative; 
+		}
+		img{
+			width: 300px;
+			height: 350px;
+		}
+		span{
+			background: #000;
+			opacity: 0.6;
+			display: block;
+			height: 30px;
+			width: 300px;
+			position: absolute;
+			color: #fff;
+			text-align: center;
+			line-height: 30px;
+		}
+		.bottom{
+			bottom: 0;
+		}
+		.content div{
+			position: absolute;
+			background: #fff;
+			width: 30px;
+			height: 30px;
+			opacity: 0.6;
+			font-weight: bold;
+			font-size: 20px;
+			text-align: center;
+			line-height: 30px;
+			top: 160px;
+			cursor: pointer;
+		}
+		.next{
+			right: 0;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function() {
+			var aInp = document.getElementsByTagName('input');
+			var oCon = document.getElementsByClassName('content')[0];
+			var aDiv = oCon.getElementsByTagName('div');
+			var aSpan = oCon.getElementsByTagName('span');
+			var num = 0;
+			var oImg = oCon.getElementsByTagName('img')[0];
+			var arr = [	{src:'../image/1.jpg',text:'初音'},
+						{src:'../image/2.jpg',text:'上神大人'},
+						{src:'../image/3.jpg',text:'海豚与美女'},
+						{src:'../image/4.jpg',text:'吾王saber'}
+					];
+
+			aDiv[1].onclick = function() {
+				oImg.src = arr[num].src;
+				num++;
+				if (num == arr.length) {
+					num = 0;
+				}
+			};		
+
+		};
+
+	</script>
+</head>
+<body>
+	<div class="wrap">
+		<input type="button" value="循环切换">
+		<input type="button" value="顺序切换">
+		<p>...</p>
+		<div class="content">
+			<span class="top">1/4</span>
+			<span class="bottom">...</span>
+			<div class="prev"><</div>
+			<img src="../image/1.jpg">
+			<div class="next">></div>
+		</div>
+	</div>
+</body>
+</html>

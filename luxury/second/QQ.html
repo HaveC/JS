@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>QQ弹窗</title>
+	<style type="text/css">
+		#div1{
+			width: 200px;
+			height: 400px;
+			background: #8a351a;
+		}
+		#div2{
+			width: 240px;
+			height: 180px;
+			background: #0D4C8A;
+			position: absolute;
+			top: 10px;
+			left: 220px;
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var aDiv = document.getElementsByTagName('div');
+			var timer = null;
+			aDiv[0].onmouseover = show ;
+			aDiv[0].onmouseout = hide ;
+
+
+			aDiv[1].onmouseover = show ;
+			aDiv[1].onmouseout = hide ;
+	
+			function show () {
+				clearTimeout(timer);
+				aDiv[1].style.display = 'block';
+			}
+			
+			function hide () {
+				timer = setTimeout(function(){
+					aDiv[1].style.display = 'none';
+				},500)	;			
+			}
+
+
+	};
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+
+</body>
+</html>
